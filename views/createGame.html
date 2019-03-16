@@ -15,5 +15,6 @@
     <div class="checkbox" ng-repeat="expansion in expansions">
         <label><input type="checkbox" ng-model="expansion.enabled"> {{expansion.name}}</label>
     </div>
+
     <button type="submit" class="btn btn-primary" ng-click="createGame(createGameForm)">Create Game</button>
 </form>

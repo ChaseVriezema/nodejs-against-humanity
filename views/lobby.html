@@ -9,9 +9,17 @@
 <div class="row" id="availableGames" >
   <div class="col-lg-10">
     <strong id="noGames" ng-show="availableGames.length == 0">no open games... use the Create Game link at the top to start one.</strong>
+<!--    
     <div ng-repeat="game in availableGames" class="well">
-      <button ng-click="joinGame(game.id)" type="button" class="btn btn-primary" style="margin-right: 10px;">Join Game</button>
+      <button ng-click="joinGame(game.id)" type="button" class="btn btn-dark" style="margin-right: 10px;">Join Game</button>
       <span style="font-size: larger">{{game.name}} - {{game.players}} of {{game.maxPlayers}} players</span>
+    </div>
+-->
+    <div ng-repeat="game in availableGames" class="list-group">
+        <button type="button" ng-click="joinGame(game.id)" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          {{game.name}}
+          <span class="badge badge-primary badge-pill">{{game.players}} of {{game.maxPlayers}} players</span>
+        </button>
     </div>
   </div>
 </div>

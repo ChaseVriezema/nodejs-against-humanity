@@ -202,6 +202,26 @@ angular.module('myApp.controllers', [])
             });
         };
 
+        $scope.getWhiteCardHtml = function (blackCard, whiteCards) {
+            //If there's no underscores to replace, tack the answers onto the end
+            if (blackCard.indexOf('_') === -1) {
+                let returnString = blackCard;
+                whiteCards.forEach(x => returnString = returnString + '<span class="blackCardAnswer">' + x + '</span>');
+                return returnString;
+            }
+            let z = -1;
+            return blackCard.replace(/_/g, function () {
+                z++;
+                if (whiteCards[z] !== undefined) {
+                    //Trim punctuation from white card
+                    const whiteCardAnswer = whiteCards[z].replace(/\./g, '');
+                    return '<span>' + whiteCardAnswer + '</span>';
+                } else {
+                    return "_";
+                }
+            });
+        };
+
         function setProgStyle() {
             if($scope.game){
                 var playersWaiting = _.reduce($scope.game.players, function(total, player) {
